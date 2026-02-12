@@ -1,0 +1,379 @@
+/* Offerte Frontend Styles */
+
+.bs-offerte-page {
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.bs-offerte-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    padding: 40px;
+}
+
+/* Header */
+.bs-offerte-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #2c3e50;
+}
+
+.bs-offerte-logo {
+    max-width: 180px;
+    max-height: 70px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.bs-offerte-company h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.bs-offerte-meta h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #2c3e50;
+    text-align: right;
+}
+
+.bs-offerte-meta p {
+    margin: 3px 0;
+    font-size: 14px;
+    text-align: right;
+}
+
+/* Notices */
+.bs-offerte-notice {
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.bs-notice-expired {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}
+
+.bs-notice-cancelled {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    color: #4b5563;
+}
+
+/* Customer Info */
+.bs-offerte-customer-info {
+    margin-bottom: 25px;
+}
+
+.bs-offerte-customer-info p {
+    margin: 2px 0;
+    font-size: 14px;
+}
+
+/* Products Table */
+.bs-offerte-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.bs-offerte-table thead {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+.bs-offerte-table th {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.bs-offerte-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.bs-offerte-table tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.bs-text-center { text-align: center; }
+.bs-text-right { text-align: right; }
+
+.bs-specs-cell {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Totals */
+.bs-offerte-totals-section {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+.bs-offerte-totals {
+    width: 300px;
+}
+
+.bs-offerte-totals td {
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+.bs-total-row {
+    border-top: 2px solid #2c3e50;
+}
+
+.bs-total-row td {
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+/* Note */
+.bs-offerte-note {
+    background-color: #f9fafb;
+    border-left: 3px solid #2c3e50;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+}
+
+.bs-offerte-note h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: #2c3e50;
+}
+
+.bs-offerte-note p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Download */
+.bs-offerte-download {
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.bs-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background-color .2s;
+}
+
+.bs-btn-primary {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+.bs-btn-primary:hover {
+    background-color: #1a252f;
+    color: #fff;
+}
+
+.bs-btn-primary:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.bs-btn-secondary {
+    background-color: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.bs-btn-secondary:hover {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.bs-btn-link {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 5px 0;
+}
+
+/* Accept Section */
+.bs-offerte-accept {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.bs-offerte-accept h2 {
+    margin: 0 0 15px;
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.bs-accept-summary {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #eff6ff;
+    border-radius: 6px;
+    border: 1px solid #bfdbfe;
+}
+
+.bs-accept-summary p {
+    margin: 0;
+    font-size: 14px;
+    color: #1e40af;
+}
+
+/* Signature */
+.bs-signature-section {
+    margin-bottom: 20px;
+}
+
+.bs-signature-section label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.bs-signature-wrapper {
+    display: inline-block;
+}
+
+#bs-signature-pad {
+    border: 2px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: crosshair;
+    display: block;
+    max-width: 100%;
+    touch-action: none;
+}
+
+/* Terms */
+.bs-terms-section {
+    margin-bottom: 20px;
+}
+
+.bs-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.bs-checkbox-label input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Submit */
+.bs-accept-submit {
+    margin-top: 20px;
+}
+
+.bs-accept-message {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.bs-accept-message.bs-msg-error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+.bs-accept-message.bs-msg-success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+/* Accepted Page */
+.bs-offerte-accepted-message {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.bs-success-icon {
+    width: 70px;
+    height: 70px;
+    background-color: #38a169;
+    color: #fff;
+    font-size: 36px;
+    line-height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.bs-offerte-accepted-message h2 {
+    color: #38a169;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.bs-accepted-details {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #f9fafb;
+    border-radius: 6px;
+    display: inline-block;
+    text-align: left;
+}
+
+.bs-accepted-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bs-offerte-container {
+        padding: 20px;
+    }
+
+    .bs-offerte-header {
+        flex-direction: column;
+    }
+
+    .bs-offerte-meta {
+        text-align: left;
+    }
+
+    .bs-offerte-meta h2,
+    .bs-offerte-meta p {
+        text-align: left;
+    }
+
+    .bs-offerte-table {
+        font-size: 12px;
+    }
+
+    #bs-signature-pad {
+        width: 100%;
+        height: 150px;
+    }
+}

@@ -1,0 +1,420 @@
+/**
+ * PDF Document Styles - Modern Design
+ *
+ * Shared styles for invoice and packing slip PDFs.
+ *
+ * @package Bossier_Calculator_Builder
+ */
+
+/* Reset & Base */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'DejaVu Sans', sans-serif;
+	font-size: 9pt;
+	line-height: 1.4;
+	color: #2d3748;
+	background: #fff;
+}
+
+/* Document Wrapper */
+.document-wrapper {
+	max-width: 100%;
+	padding: 20px 30px;
+}
+
+/* Header Table */
+.header-table {
+	width: 100%;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+}
+
+.header-table td {
+	vertical-align: top;
+	padding: 0;
+}
+
+.logo-cell {
+	width: 50%;
+}
+
+.logo-cell img.logo {
+	max-width: 150px;
+	max-height: 50px;
+}
+
+.company-info-cell {
+	width: 50%;
+	text-align: right;
+}
+
+.company-name {
+	font-size: 14pt;
+	font-weight: bold;
+	color: #1e40af;
+	margin-bottom: 4px;
+}
+
+.company-address {
+	font-size: 8pt;
+	color: #4a5568;
+	margin-bottom: 4px;
+	line-height: 1.4;
+}
+
+.company-detail {
+	font-size: 7pt;
+	color: #718096;
+	margin-top: 1px;
+}
+
+/* Document Title */
+.document-title {
+	font-size: 18pt;
+	font-weight: bold;
+	color: #1e40af;
+	margin: 12px 0;
+	padding: 8px 0;
+	border-top: 2px solid #1e40af;
+	border-bottom: 1px solid #e2e8f0;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+/* Info Table (Address & Order Info) */
+.info-table {
+	width: 100%;
+	margin-bottom: 15px;
+	border-collapse: collapse;
+}
+
+.info-table td {
+	vertical-align: top;
+	padding: 0;
+}
+
+.address-cell {
+	width: 50%;
+}
+
+.address-block {
+	background: #f8fafc;
+	padding: 12px;
+	border-radius: 4px;
+	font-size: 9pt;
+	line-height: 1.5;
+	border-left: 3px solid #1e40af;
+}
+
+.address-label {
+	font-size: 7pt;
+	color: #64748b;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+.customer-vat {
+	font-size: 8pt;
+	color: #1e40af;
+	margin-top: 6px;
+	padding-top: 6px;
+	border-top: 1px dashed #cbd5e1;
+	font-weight: 500;
+}
+
+.customer-email {
+	font-size: 8pt;
+	color: #3b82f6;
+	margin-top: 4px;
+}
+
+.order-info-cell {
+	width: 50%;
+	padding-left: 15px;
+}
+
+.order-details {
+	width: 100%;
+	border-collapse: collapse;
+	background: #f8fafc;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.order-details tr {
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.order-details tr:last-child {
+	border-bottom: none;
+}
+
+.order-details th {
+	text-align: left;
+	font-weight: 500;
+	color: #64748b;
+	padding: 6px 10px;
+	width: 45%;
+	font-size: 8pt;
+	background: #f1f5f9;
+}
+
+.order-details td {
+	text-align: left;
+	font-weight: 600;
+	color: #1e293b;
+	padding: 6px 10px;
+	font-size: 8pt;
+}
+
+/* Products Table */
+.products-table {
+	width: 100%;
+	margin-bottom: 12px;
+	border-collapse: collapse;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.products-table thead tr {
+	background: #1e40af;
+	color: #ffffff;
+}
+
+.products-table th {
+	padding: 8px 10px;
+	text-align: left;
+	font-weight: 600;
+	font-size: 8pt;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+}
+
+.products-table th.qty-col,
+.products-table th.price-col {
+	text-align: center;
+	width: 15%;
+}
+
+.products-table tbody tr {
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.products-table tbody tr:nth-child(even) {
+	background: #f8fafc;
+}
+
+.products-table tbody tr:last-child {
+	border-bottom: none;
+}
+
+.products-table td {
+	padding: 8px 10px;
+	vertical-align: top;
+}
+
+.products-table td.qty-col,
+.products-table td.price-col {
+	text-align: center;
+	font-weight: 600;
+}
+
+.item-name {
+	font-weight: 600;
+	color: #1e293b;
+	font-size: 9pt;
+}
+
+.item-sku {
+	font-size: 7pt;
+	color: #64748b;
+	display: inline-block;
+	margin-top: 2px;
+	padding: 1px 5px;
+	background: #e2e8f0;
+	border-radius: 3px;
+}
+
+.item-weight {
+	font-size: 8pt;
+	color: #64748b;
+	display: inline-block;
+	margin-top: 2px;
+}
+
+.item-detail {
+	font-size: 8pt;
+	color: #64748b;
+	display: inline-block;
+	margin-top: 2px;
+}
+
+/* Calculator Configuration (Packing Slip) - Clean List Format */
+.calculator-config {
+	margin-top: 6px;
+	padding: 8px 10px;
+	background: #eff6ff;
+	border-left: 3px solid #3b82f6;
+	border-radius: 0 4px 4px 0;
+}
+
+.calc-field {
+	margin: 3px 0;
+	color: #1e293b;
+	font-size: 8pt;
+	line-height: 1.3;
+}
+
+.calc-field:first-child {
+	margin-top: 0;
+}
+
+.calc-field:last-child {
+	margin-bottom: 0;
+}
+
+.calc-field strong {
+	color: #1e40af;
+	font-weight: 600;
+	display: inline-block;
+	min-width: 60px;
+}
+
+/* Totals Table */
+.totals-table {
+	width: 40%;
+	margin-left: auto;
+	margin-top: 10px;
+	border-collapse: collapse;
+	background: #f8fafc;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.totals-table tr {
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.totals-table tr:last-child {
+	border-bottom: none;
+}
+
+.totals-table tr.total {
+	background: #1e40af;
+}
+
+.totals-table th {
+	text-align: left;
+	padding: 6px 10px;
+	font-weight: 500;
+	color: #4a5568;
+	font-size: 8pt;
+}
+
+.totals-table td {
+	text-align: right;
+	padding: 6px 10px;
+	font-weight: 600;
+	color: #1e293b;
+	font-size: 8pt;
+}
+
+.totals-table tr.total th,
+.totals-table tr.total td {
+	color: #ffffff;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+/* Customer Notes */
+.customer-notes {
+	margin: 12px 0;
+	padding: 10px 12px;
+	background: #fefce8;
+	border-left: 3px solid #f59e0b;
+	border-radius: 0 4px 4px 0;
+}
+
+.customer-notes h3 {
+	font-size: 8pt;
+	margin-bottom: 4px;
+	color: #b45309;
+	font-weight: 600;
+}
+
+.customer-notes p {
+	font-size: 8pt;
+	color: #78350f;
+	line-height: 1.4;
+}
+
+/* Footer */
+.document-footer {
+	position: fixed;
+	bottom: 15px;
+	left: 30px;
+	right: 30px;
+	text-align: center;
+	font-size: 7pt;
+	color: #94a3b8;
+	border-top: 1px solid #e2e8f0;
+	padding-top: 8px;
+	line-height: 1.4;
+}
+
+/* Packing Slip Specific */
+.products-table.packing-slip th.product-col {
+	width: 85%;
+}
+
+.products-table.packing-slip th.qty-col {
+	width: 15%;
+}
+
+/* Invoice Specific */
+.products-table.invoice th.product-col {
+	width: 55%;
+}
+
+/* Badge Styles */
+.status-badge {
+	display: inline-block;
+	padding: 2px 6px;
+	font-size: 7pt;
+	font-weight: 600;
+	border-radius: 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+}
+
+.status-badge.paid {
+	background: #dcfce7;
+	color: #166534;
+}
+
+.status-badge.pending {
+	background: #fef3c7;
+	color: #b45309;
+}
+
+/* Shipping Line Item */
+.shipping-item {
+	background: #f0fdf4;
+}
+
+.shipping-item td {
+	border-top: 1px dashed #86efac;
+}
+
+.shipping-description {
+	font-size: 7pt;
+	color: #64748b;
+	margin-top: 2px;
+}

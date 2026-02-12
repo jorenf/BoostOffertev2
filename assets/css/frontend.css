@@ -1,0 +1,889 @@
+/**
+ * Boost Calculator — Frontend Styles (bs-calc)
+ *
+ * BEM component with .bs-calc prefix.
+ * DM Sans + Manrope typography, blue (#0066FF) accent.
+ *
+ * @package Bossier_Calculator_Builder
+ * @since   3.2.0
+ */
+
+/* ============================================
+   CALCULATOR WRAPPER
+   ============================================ */
+.bs-calc {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: #0D1B2A;
+    max-width: 480px;
+    margin-bottom: 24px;
+}
+
+/* ---- Grouped rows: 2 fields side by side ---- */
+.bs-calc__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.bs-calc__row--full {
+    grid-template-columns: 1fr;
+}
+
+/* ============================================
+   FIELD GROUP
+   ============================================ */
+.bs-calc__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bs-calc__field--hidden {
+    display: none !important;
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+.bs-calc__label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0D1B2A;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.bs-calc__label-req {
+    color: #DC2626;
+}
+
+.bs-calc__hint-icon {
+    width: 14px;
+    height: 14px;
+    background: #EBF2FF;
+    color: #0066FF;
+    border-radius: 50%;
+    display: inline-grid;
+    place-items: center;
+    font-size: 9px;
+    font-weight: 700;
+    cursor: help;
+    flex-shrink: 0;
+}
+
+/* Tooltip on hover */
+.bs-calc__hint-icon[title]:hover {
+    position: relative;
+}
+
+.bs-calc__hint-icon[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background: #1f2937;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    border-radius: 6px;
+    white-space: normal;
+    max-width: 220px;
+    min-width: 120px;
+    text-align: center;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+.bs-calc__hint-icon[title]:hover::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 2px);
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1f2937;
+    z-index: 101;
+}
+
+/* ============================================
+   INPUTS
+   ============================================ */
+.bs-calc__input {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0D1B2A;
+    padding: 9px 12px;
+    border: 1.5px solid #E3E8EE;
+    border-radius: 7px;
+    background: #FFFFFF;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+}
+
+.bs-calc__input::-webkit-outer-spin-button,
+.bs-calc__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bs-calc__input:focus {
+    outline: none;
+    border-color: #0066FF;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
+}
+
+.bs-calc__input::placeholder {
+    color: #C4CDD5;
+    font-weight: 400;
+}
+
+/* Input with unit suffix */
+.bs-calc__input-wrap {
+    position: relative;
+}
+
+.bs-calc__input-wrap .bs-calc__input {
+    padding-right: 40px;
+}
+
+.bs-calc__unit {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 500;
+    color: #8898A8;
+    pointer-events: none;
+}
+
+/* Range hint bar (min/max) */
+.bs-calc__range {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #92400E;
+    margin-top: 4px;
+}
+
+/* Dimension error message */
+.bs-calc__dimension-error {
+    color: #DC2626;
+    font-size: 12px;
+    margin-top: 4px;
+    padding: 6px 10px;
+    background: #FEF2F2;
+    border-radius: 5px;
+    border-left: 3px solid #DC2626;
+    display: none;
+}
+
+.bs-calc__dimension-error.visible {
+    display: block;
+}
+
+/* ============================================
+   SELECT DROPDOWN
+   ============================================ */
+.bs-calc__select-wrap {
+    position: relative;
+}
+
+.bs-calc__select {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0D1B2A;
+    padding: 9px 36px 9px 12px;
+    border: 1.5px solid #E3E8EE;
+    border-radius: 7px;
+    background: #FFFFFF;
+    appearance: none;
+    cursor: pointer;
+    width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    box-sizing: border-box;
+}
+
+.bs-calc__select:focus {
+    outline: none;
+    border-color: #0066FF;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.08);
+}
+
+.bs-calc__select-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #8898A8;
+    pointer-events: none;
+}
+
+/* ============================================
+   TOGGLE BUTTONS (Color, Radio, Checkbox)
+   ============================================ */
+.bs-calc__toggles {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.bs-calc__toggle {
+    padding: 8px 16px;
+    border: 1.5px solid #E3E8EE;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #556270;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.12s;
+}
+
+.bs-calc__toggle:hover {
+    border-color: #8898A8;
+}
+
+.bs-calc__toggle--active {
+    border-color: #0066FF;
+    color: #0066FF;
+    background: #F0F5FF;
+    font-weight: 600;
+}
+
+/* ============================================
+   CHECKBOX GROUP
+   ============================================ */
+.bs-calc__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bs-calc__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1.5px solid #E3E8EE;
+    border-radius: 7px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    color: #556270;
+    transition: all 0.12s;
+}
+
+.bs-calc__checkbox-label:hover {
+    border-color: #8898A8;
+}
+
+.bs-calc__checkbox-label:has(input:checked) {
+    border-color: #0066FF;
+    color: #0066FF;
+    background: #F0F5FF;
+}
+
+.bs-calc__checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #0066FF;
+    margin: 0;
+}
+
+.bs-calc__surcharge {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-left: 4px;
+}
+
+/* ============================================
+   MITRE ANGLE GROUPS
+   ============================================ */
+.bs-calc__mitre-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.bs-calc__mitre-group {
+    flex: 1;
+    min-width: 130px;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.bs-calc__mitre-group--hidden {
+    display: none;
+}
+
+.bs-calc__mitre-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #556270;
+    display: block;
+}
+
+/* Smaller select for mitre */
+.bs-calc__mitre-select {
+    font-size: 13px;
+    padding: 8px 32px 8px 10px;
+}
+
+/* ============================================
+   IMAGE DROPDOWN (Mitre with images)
+   ============================================ */
+.bs-calc__image-dropdown {
+    position: relative;
+    width: 100%;
+    max-width: 220px;
+}
+
+.bs-calc__image-dropdown-selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1.5px solid #E3E8EE;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.bs-calc__image-dropdown-selected:hover {
+    border-color: #8898A8;
+}
+
+.bs-calc__image-dropdown.open .bs-calc__image-dropdown-selected {
+    border-color: #0066FF;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.bs-calc__image-dropdown-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #0D1B2A;
+}
+
+.bs-calc__image-dropdown-text img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.bs-calc__image-dropdown-arrow {
+    color: #8898A8;
+    font-size: 10px;
+    transition: transform 0.2s ease;
+}
+
+.bs-calc__image-dropdown.open .bs-calc__image-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.bs-calc__image-dropdown-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1.5px solid #0066FF;
+    border-top: none;
+    border-radius: 0 0 7px 7px;
+    max-height: 280px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.bs-calc__image-dropdown.open .bs-calc__image-dropdown-options {
+    display: block;
+}
+
+.bs-calc__image-dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    border-bottom: 1px solid #F0F2F5;
+    position: relative;
+}
+
+.bs-calc__image-dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.bs-calc__image-dropdown-option:hover {
+    background: #F7F8FA;
+}
+
+.bs-calc__image-dropdown-option.selected {
+    background: #F0F5FF;
+}
+
+.bs-calc__dropdown-option-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #E3E8EE;
+    background: #fff;
+}
+
+.bs-calc__dropdown-option-label {
+    flex: 1;
+    font-size: 13px;
+    color: #0D1B2A;
+}
+
+/* Mitre Thumbnail Images */
+.bs-calc__mitre-thumb {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+    border: 1px solid #E3E8EE;
+    background: #fff;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.bs-calc__mitre-thumb:hover {
+    border-color: #0066FF;
+}
+
+/* Floating preview overlay for mitre images */
+.bs-calc__mitre-preview {
+    position: fixed;
+    z-index: 100000;
+    pointer-events: none;
+    background: #fff;
+    border: 2px solid #0066FF;
+    border-radius: 12px;
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.bs-calc__mitre-preview.visible {
+    opacity: 1;
+}
+
+.bs-calc__mitre-preview img {
+    display: block;
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.bs-calc__divider {
+    height: 1px;
+    background: #E3E8EE;
+    margin: 16px 0;
+}
+
+/* ============================================
+   RESULT BLOCK
+   ============================================ */
+.bs-calc__result {
+    background: #F7F8FA;
+    border: 1px solid #E3E8EE;
+    border-radius: 9px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+}
+
+.bs-calc__result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+}
+
+.bs-calc__result-row + .bs-calc__result-row {
+    border-top: 1px solid #E3E8EE;
+    margin-top: 6px;
+    padding-top: 8px;
+}
+
+.bs-calc__result-label {
+    font-size: 13px;
+    color: #556270;
+}
+
+.bs-calc__result-value {
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #0066FF;
+}
+
+.bs-calc__result-value--sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0D1B2A;
+}
+
+/* ============================================
+   CHECKBOX INLINE TEXT INPUT
+   ============================================ */
+.bs-calc__checkbox-label .bs-calc__option-text {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+/* ============================================
+   SAMPLE / PROEFDORPEL
+   ============================================ */
+.bs-calc__sample {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #FFF8F0;
+    border: 1px solid #FFE8D0;
+    border-radius: 7px;
+    font-size: 13px;
+    color: #6B4A2E;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.bs-calc__sample:hover {
+    background: #FFF0E0;
+    border-color: #FFD9B3;
+    color: #6B4A2E;
+    text-decoration: none;
+}
+
+.bs-calc__sample-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.bs-calc__sample-text {
+    line-height: 1.4;
+}
+
+.bs-calc__sample-text strong {
+    display: block;
+    font-size: 13px;
+    color: #4A3520;
+}
+
+/* ============================================
+   NOTICE
+   ============================================ */
+.bs-calc__notice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #F0F5FF;
+    border: 1px solid #EBF2FF;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3B4F68;
+    margin-bottom: 14px;
+}
+
+.bs-calc__notice-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   QUANTITY + ADD TO CART
+   ============================================ */
+.bs-calc__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bs-calc__qty {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #E3E8EE;
+    border-radius: 7px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.bs-calc__qty-btn {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #556270;
+    transition: background 0.1s;
+}
+
+.bs-calc__qty-btn:hover {
+    background: #F7F8FA;
+    color: #0D1B2A;
+}
+
+.bs-calc__qty-val {
+    width: 42px;
+    height: 38px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #E3E8EE;
+    border-right: 1px solid #E3E8EE;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0D1B2A;
+    background: #FFFFFF;
+    -moz-appearance: textfield;
+}
+
+.bs-calc__qty-val::-webkit-outer-spin-button,
+.bs-calc__qty-val::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bs-calc__qty-val:focus {
+    outline: none;
+}
+
+/* Add-to-cart button inside calculator actions (moved via JS) */
+.bs-calc__add {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    background: #0066FF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.bs-calc__add:hover {
+    background: #004EC2;
+    box-shadow: 0 2px 12px rgba(0, 102, 255, 0.25);
+}
+
+.bs-calc__add:active {
+    transform: scale(0.98);
+}
+
+/* Fallback: style WC button when JS hasn't moved it yet */
+.bs-calc ~ .single_add_to_cart_button,
+form.cart:has(.bs-calc) .single_add_to_cart_button:not(.bs-calc__add) {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 20px;
+    background: #0066FF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.bs-calc ~ .single_add_to_cart_button:hover,
+form.cart:has(.bs-calc) .single_add_to_cart_button:not(.bs-calc__add):hover {
+    background: #004EC2;
+    box-shadow: 0 2px 12px rgba(0, 102, 255, 0.25);
+}
+
+/* Hide WooCommerce default quantity (we use our own) */
+form.cart:has(.bs-calc) > .quantity {
+    display: none !important;
+}
+
+/* ============================================
+   CART/CHECKOUT ITEM META
+   ============================================ */
+.bossier-cart-item-meta dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 12px;
+    font-size: 0.875rem;
+}
+
+.bossier-cart-item-meta dt {
+    font-weight: 600;
+    color: #374151;
+}
+
+.bossier-cart-item-meta dd {
+    margin: 0;
+    color: #6b7280;
+}
+
+.woocommerce-cart-form .bossier-cart-item-meta,
+.woocommerce-checkout-review-order .bossier-cart-item-meta {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed #E3E8EE;
+}
+
+/* ============================================
+   BRIEVENBUS (MAILBOX) FIELD
+   ============================================ */
+.bs-calc__brievenbus {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bs-calc__brievenbus-question {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.bs-calc__brievenbus-qlabel {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1B2A3D;
+    min-width: 100px;
+}
+
+.bs-calc__brievenbus-cost {
+    font-size: 12px;
+    color: #0066FF;
+    font-weight: 500;
+}
+
+.bs-calc__brievenbus-toggles {
+    margin-left: auto;
+}
+
+.bs-calc__brievenbus-detail {
+    padding-left: 16px;
+    border-left: 2px solid #E3E8EE;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bs-calc__brievenbus-text {
+    max-width: 280px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 600px) {
+    .bs-calc__row {
+        grid-template-columns: 1fr;
+    }
+
+    .bs-calc__toggles {
+        gap: 4px;
+    }
+
+    .bs-calc__toggle {
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .bs-calc__image-dropdown {
+        max-width: 100%;
+    }
+
+    .bs-calc__mitre-groups {
+        flex-direction: column;
+    }
+
+    .bs-calc__mitre-group {
+        max-width: 100%;
+    }
+
+    .bs-calc__result-value {
+        font-size: 16px;
+    }
+
+    .bs-calc__actions {
+        flex-direction: column;
+    }
+
+    .bs-calc__actions .bs-calc__qty {
+        align-self: flex-start;
+    }
+
+    .bs-calc__add,
+    .bs-calc ~ .single_add_to_cart_button,
+    form.cart:has(.bs-calc) .single_add_to_cart_button {
+        width: 100%;
+    }
+
+    /* Mobile: center preview and cap size */
+    .bs-calc__mitre-preview {
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .bs-calc__mitre-preview img {
+        width: 70vw;
+        height: 70vw;
+        max-width: 400px;
+        max-height: 400px;
+    }
+}
