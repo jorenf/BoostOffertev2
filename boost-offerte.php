@@ -129,8 +129,9 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\\init_plugin', 20 );
  */
 function activate() {
 	// Register CPT so rewrite rules are set.
-	Offerte_Post_Type::register_post_type();
-	Offerte_Post_Type::register_post_statuses();
+	$cpt = new Offerte_Post_Type();
+	$cpt->register_post_type();
+	$cpt->register_custom_statuses();
 
 	flush_rewrite_rules();
 }
