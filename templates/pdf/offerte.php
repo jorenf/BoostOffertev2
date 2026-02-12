@@ -2,9 +2,9 @@
 /**
  * Offerte PDF template.
  *
- * @package Bossier_Calculator_Builder
- * @var Bossier\Calculator\Offerte\Offerte_PDF   $offerte_pdf
- * @var Bossier\Calculator\Offerte\Offerte_Model  $offerte
+ * @package Boost_Offerte
+ * @var BoostOfferte\Offerte_PDF   $offerte_pdf
+ * @var BoostOfferte\Offerte_Model  $offerte
  * @var array  $company
  * @var array  $settings
  */
@@ -83,7 +83,7 @@ $adres    = $customer['adres'] ?? array();
                             <td class="detail-label">Betaalmethode:</td>
                             <td class="detail-value">
                                 <?php
-                                $pm = \Bossier\Calculator\Offerte\Offerte_Settings::get_payment_method_options();
+                                $pm = \BoostOfferte\Offerte_Settings::get_payment_method_options();
                                 echo esc_html( $pm[ $offerte->get_payment_method() ] ?? $offerte->get_payment_method() );
                                 ?>
                             </td>
@@ -110,7 +110,7 @@ $adres    = $customer['adres'] ?? array();
                         <td class="col-product">
                             <?php echo esc_html( $item['title'] ?? '' ); ?>
                             <?php
-                            $cats = \Bossier\Calculator\Offerte\Offerte_Settings::get_product_categories();
+                            $cats = \BoostOfferte\Offerte_Settings::get_product_categories();
                             if ( ! empty( $item['category'] ) && isset( $cats[ $item['category'] ] ) ) :
                             ?>
                                 <br><small><?php echo esc_html( $cats[ $item['category'] ] ); ?></small>

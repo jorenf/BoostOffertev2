@@ -2,8 +2,8 @@
 /**
  * Public Offerte Page template.
  *
- * @package Bossier_Calculator_Builder
- * @var Bossier\Calculator\Offerte\Offerte_Model $bs_offerte (via $GLOBALS)
+ * @package Boost_Offerte
+ * @var BoostOfferte\Offerte_Model $bs_offerte (via $GLOBALS)
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 $offerte   = $GLOBALS['bs_offerte'];
 $customer  = $offerte->get_customer_data();
 $items     = $offerte->get_items();
-$settings  = \Bossier\Calculator\Offerte\Offerte_Settings::get_settings();
+$settings  = \BoostOfferte\Offerte_Settings::get_settings();
 $company   = $settings['offerte_company_name'] ?: get_bloginfo( 'name' );
 $status    = $offerte->get_status();
 $can_accept = $offerte->can_accept();
@@ -34,21 +34,21 @@ get_header();
                 <h1><?php echo esc_html( $company ); ?></h1>
             </div>
             <div class="bs-offerte-meta">
-                <h2><?php echo esc_html( sprintf( __( 'Offerte %s', 'bossier-calculator' ), $offerte->get_quote_number() ) ); ?></h2>
-                <p><strong><?php esc_html_e( 'Datum:', 'bossier-calculator' ); ?></strong> <?php echo esc_html( date_i18n( 'd F Y', strtotime( $offerte->get_post()->post_date ) ) ); ?></p>
-                <p><strong><?php esc_html_e( 'Geldig tot:', 'bossier-calculator' ); ?></strong> <?php echo esc_html( date_i18n( 'd F Y', strtotime( $offerte->get_valid_until() ) ) ); ?></p>
+                <h2><?php echo esc_html( sprintf( __( 'Offerte %s', 'boost-offerte' ), $offerte->get_quote_number() ) ); ?></h2>
+                <p><strong><?php esc_html_e( 'Datum:', 'boost-offerte' ); ?></strong> <?php echo esc_html( date_i18n( 'd F Y', strtotime( $offerte->get_post()->post_date ) ) ); ?></p>
+                <p><strong><?php esc_html_e( 'Geldig tot:', 'boost-offerte' ); ?></strong> <?php echo esc_html( date_i18n( 'd F Y', strtotime( $offerte->get_valid_until() ) ) ); ?></p>
             </div>
         </div>
 
         <!-- Status Messages -->
         <?php if ( 'offerte-expired' === $status ) : ?>
             <div class="bs-offerte-notice bs-notice-expired">
-                <strong><?php esc_html_e( 'Deze offerte is verlopen.', 'bossier-calculator' ); ?></strong>
-                <p><?php esc_html_e( 'Neem contact met ons op voor een nieuwe offerte.', 'bossier-calculator' ); ?></p>
+                <strong><?php esc_html_e( 'Deze offerte is verlopen.', 'boost-offerte' ); ?></strong>
+                <p><?php esc_html_e( 'Neem contact met ons op voor een nieuwe offerte.', 'boost-offerte' ); ?></p>
             </div>
         <?php elseif ( 'offerte-cancelled' === $status ) : ?>
             <div class="bs-offerte-notice bs-notice-cancelled">
-                <strong><?php esc_html_e( 'Deze offerte is geannuleerd.', 'bossier-calculator' ); ?></strong>
+                <strong><?php esc_html_e( 'Deze offerte is geannuleerd.', 'boost-offerte' ); ?></strong>
             </div>
         <?php endif; ?>
 
@@ -69,11 +69,11 @@ get_header();
             <table class="bs-offerte-table">
                 <thead>
                     <tr>
-                        <th><?php esc_html_e( 'Product', 'bossier-calculator' ); ?></th>
-                        <th><?php esc_html_e( 'Specificaties', 'bossier-calculator' ); ?></th>
-                        <th class="bs-text-center"><?php esc_html_e( 'Aantal', 'bossier-calculator' ); ?></th>
-                        <th class="bs-text-right"><?php esc_html_e( 'Stukprijs', 'bossier-calculator' ); ?></th>
-                        <th class="bs-text-right"><?php esc_html_e( 'Totaal', 'bossier-calculator' ); ?></th>
+                        <th><?php esc_html_e( 'Product', 'boost-offerte' ); ?></th>
+                        <th><?php esc_html_e( 'Specificaties', 'boost-offerte' ); ?></th>
+                        <th class="bs-text-center"><?php esc_html_e( 'Aantal', 'boost-offerte' ); ?></th>
+                        <th class="bs-text-right"><?php esc_html_e( 'Stukprijs', 'boost-offerte' ); ?></th>
+                        <th class="bs-text-right"><?php esc_html_e( 'Totaal', 'boost-offerte' ); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,7 +82,7 @@ get_header();
                             <td>
                                 <strong><?php echo esc_html( $item['title'] ?? '' ); ?></strong>
                                 <?php if ( ! empty( $item['category'] ) ) : ?>
-                                    <br><small><?php echo esc_html( \Bossier\Calculator\Offerte\Offerte_Settings::get_product_categories()[ $item['category'] ] ?? $item['category'] ); ?></small>
+                                    <br><small><?php echo esc_html( \BoostOfferte\Offerte_Settings::get_product_categories()[ $item['category'] ] ?? $item['category'] ); ?></small>
                                 <?php endif; ?>
                             </td>
                             <td class="bs-specs-cell">
@@ -110,21 +110,21 @@ get_header();
         <div class="bs-offerte-totals-section">
             <table class="bs-offerte-totals">
                 <tr>
-                    <td><?php esc_html_e( 'Subtotaal', 'bossier-calculator' ); ?></td>
+                    <td><?php esc_html_e( 'Subtotaal', 'boost-offerte' ); ?></td>
                     <td class="bs-text-right">&euro; <?php echo esc_html( number_format( $offerte->get_subtotal(), 2, ',', '.' ) ); ?></td>
                 </tr>
                 <?php if ( $offerte->get_shipping_cost() > 0 ) : ?>
                     <tr>
-                        <td><?php esc_html_e( 'Verzendkosten', 'bossier-calculator' ); ?></td>
+                        <td><?php esc_html_e( 'Verzendkosten', 'boost-offerte' ); ?></td>
                         <td class="bs-text-right">&euro; <?php echo esc_html( number_format( $offerte->get_shipping_cost(), 2, ',', '.' ) ); ?></td>
                     </tr>
                 <?php endif; ?>
                 <tr>
-                    <td><?php esc_html_e( 'BTW (21%)', 'bossier-calculator' ); ?></td>
+                    <td><?php esc_html_e( 'BTW (21%)', 'boost-offerte' ); ?></td>
                     <td class="bs-text-right">&euro; <?php echo esc_html( number_format( $offerte->get_tax(), 2, ',', '.' ) ); ?></td>
                 </tr>
                 <tr class="bs-total-row">
-                    <td><strong><?php esc_html_e( 'Totaal', 'bossier-calculator' ); ?></strong></td>
+                    <td><strong><?php esc_html_e( 'Totaal', 'boost-offerte' ); ?></strong></td>
                     <td class="bs-text-right"><strong>&euro; <?php echo esc_html( number_format( $offerte->get_total(), 2, ',', '.' ) ); ?></strong></td>
                 </tr>
             </table>
@@ -133,7 +133,7 @@ get_header();
         <!-- Customer Note -->
         <?php if ( ! empty( $offerte->get_customer_note() ) ) : ?>
             <div class="bs-offerte-note">
-                <h3><?php esc_html_e( 'Opmerking', 'bossier-calculator' ); ?></h3>
+                <h3><?php esc_html_e( 'Opmerking', 'boost-offerte' ); ?></h3>
                 <p><?php echo nl2br( esc_html( $offerte->get_customer_note() ) ); ?></p>
             </div>
         <?php endif; ?>
@@ -141,29 +141,29 @@ get_header();
         <!-- PDF Download -->
         <div class="bs-offerte-download">
             <a href="<?php echo esc_url( admin_url( 'admin-ajax.php?action=bs_download_offerte_pdf&offerte_id=' . $offerte->get_id() . '&token=' . $offerte->get_access_token() ) ); ?>" class="bs-btn bs-btn-secondary">
-                <?php esc_html_e( 'Download PDF', 'bossier-calculator' ); ?>
+                <?php esc_html_e( 'Download PDF', 'boost-offerte' ); ?>
             </a>
         </div>
 
         <!-- Accept Section -->
         <?php if ( $can_accept ) : ?>
             <div class="bs-offerte-accept" id="bs-accept-section">
-                <h2><?php esc_html_e( 'Offerte Accepteren', 'bossier-calculator' ); ?></h2>
+                <h2><?php esc_html_e( 'Offerte Accepteren', 'boost-offerte' ); ?></h2>
 
                 <div class="bs-accept-summary">
                     <p><?php echo esc_html( sprintf(
-                        __( 'Door deze offerte te accepteren gaat u akkoord met een bestelling ter waarde van %s (incl. BTW).', 'bossier-calculator' ),
+                        __( 'Door deze offerte te accepteren gaat u akkoord met een bestelling ter waarde van %s (incl. BTW).', 'boost-offerte' ),
                         '€ ' . number_format( $offerte->get_total(), 2, ',', '.' )
                     ) ); ?></p>
                 </div>
 
                 <!-- Signature -->
                 <div class="bs-signature-section">
-                    <label><?php esc_html_e( 'Uw handtekening', 'bossier-calculator' ); ?></label>
+                    <label><?php esc_html_e( 'Uw handtekening', 'boost-offerte' ); ?></label>
                     <div class="bs-signature-wrapper">
                         <canvas id="bs-signature-pad" width="500" height="200"></canvas>
                         <button type="button" id="bs-clear-signature" class="bs-btn-link">
-                            <?php esc_html_e( 'Handtekening wissen', 'bossier-calculator' ); ?>
+                            <?php esc_html_e( 'Handtekening wissen', 'boost-offerte' ); ?>
                         </button>
                     </div>
                 </div>
@@ -173,13 +173,13 @@ get_header();
                     <label class="bs-checkbox-label">
                         <input type="checkbox" id="bs-accept-terms">
                         <?php
-                        $terms_text = $settings['offerte_terms_text'] ?: __( 'Ik ga akkoord met de algemene voorwaarden', 'bossier-calculator' );
+                        $terms_text = $settings['offerte_terms_text'] ?: __( 'Ik ga akkoord met de algemene voorwaarden', 'boost-offerte' );
                         if ( ! empty( $settings['offerte_terms_url'] ) ) {
                             printf(
                                 '%s (<a href="%s" target="_blank">%s</a>)',
                                 esc_html( $terms_text ),
                                 esc_url( $settings['offerte_terms_url'] ),
-                                esc_html__( 'lezen', 'bossier-calculator' )
+                                esc_html__( 'lezen', 'boost-offerte' )
                             );
                         } else {
                             echo esc_html( $terms_text );
@@ -191,7 +191,7 @@ get_header();
                 <!-- Submit -->
                 <div class="bs-accept-submit">
                     <button type="button" id="bs-accept-offerte" class="bs-btn bs-btn-primary" disabled>
-                        <?php esc_html_e( 'Offerte Accepteren', 'bossier-calculator' ); ?>
+                        <?php esc_html_e( 'Offerte Accepteren', 'boost-offerte' ); ?>
                     </button>
                     <div id="bs-accept-message" class="bs-accept-message" style="display:none;"></div>
                 </div>

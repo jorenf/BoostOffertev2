@@ -2,15 +2,15 @@
 /**
  * Offerte Accepted (success) page template.
  *
- * @package Bossier_Calculator_Builder
- * @var Bossier\Calculator\Offerte\Offerte_Model $bs_offerte (via $GLOBALS)
+ * @package Boost_Offerte
+ * @var BoostOfferte\Offerte_Model $bs_offerte (via $GLOBALS)
  */
 
 defined( 'ABSPATH' ) || exit;
 
 $offerte  = $GLOBALS['bs_offerte'];
 $customer = $offerte->get_customer_data();
-$settings = \Bossier\Calculator\Offerte\Offerte_Settings::get_settings();
+$settings = \BoostOfferte\Offerte_Settings::get_settings();
 $company  = $settings['offerte_company_name'] ?: get_bloginfo( 'name' );
 
 get_header();
@@ -33,16 +33,16 @@ get_header();
 
         <div class="bs-offerte-accepted-message">
             <div class="bs-success-icon">&#10003;</div>
-            <h2><?php esc_html_e( 'Offerte Geaccepteerd!', 'bossier-calculator' ); ?></h2>
+            <h2><?php esc_html_e( 'Offerte Geaccepteerd!', 'boost-offerte' ); ?></h2>
             <p><?php echo esc_html( sprintf(
-                __( 'Bedankt %s! Uw offerte %s is succesvol geaccepteerd.', 'bossier-calculator' ),
+                __( 'Bedankt %s! Uw offerte %s is succesvol geaccepteerd.', 'boost-offerte' ),
                 $customer['naam'],
                 $offerte->get_quote_number()
             ) ); ?></p>
 
             <?php if ( $offerte->get_wc_order_id() ) : ?>
                 <p><?php echo esc_html( sprintf(
-                    __( 'Uw bestelling #%d is aangemaakt. U ontvangt hierover een e-mail met verdere instructies.', 'bossier-calculator' ),
+                    __( 'Uw bestelling #%d is aangemaakt. U ontvangt hierover een e-mail met verdere instructies.', 'boost-offerte' ),
                     $offerte->get_wc_order_id()
                 ) ); ?></p>
 
@@ -51,14 +51,14 @@ get_header();
                 if ( $order && 'pending' === $order->get_status() ) :
                 ?>
                     <a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="bs-btn bs-btn-primary">
-                        <?php esc_html_e( 'Ga naar betaling', 'bossier-calculator' ); ?>
+                        <?php esc_html_e( 'Ga naar betaling', 'boost-offerte' ); ?>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
 
             <div class="bs-accepted-details">
-                <p><strong><?php esc_html_e( 'Ondertekend op:', 'bossier-calculator' ); ?></strong> <?php echo esc_html( date_i18n( 'd F Y \o\m H:i', strtotime( $offerte->get_signed_at() ) ) ); ?></p>
-                <p><strong><?php esc_html_e( 'Totaalbedrag:', 'bossier-calculator' ); ?></strong> &euro; <?php echo esc_html( number_format( $offerte->get_total(), 2, ',', '.' ) ); ?></p>
+                <p><strong><?php esc_html_e( 'Ondertekend op:', 'boost-offerte' ); ?></strong> <?php echo esc_html( date_i18n( 'd F Y \o\m H:i', strtotime( $offerte->get_signed_at() ) ) ); ?></p>
+                <p><strong><?php esc_html_e( 'Totaalbedrag:', 'boost-offerte' ); ?></strong> &euro; <?php echo esc_html( number_format( $offerte->get_total(), 2, ',', '.' ) ); ?></p>
             </div>
         </div>
     </div>

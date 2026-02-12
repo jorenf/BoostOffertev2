@@ -3,7 +3,7 @@
  *
  * Handles: line items, customer search, live pricing, totals recalculation, action buttons.
  *
- * @package Bossier_Calculator_Builder
+ * @package Boost_Offerte
  */
 
 /* global jQuery, bsOfferteAdmin */

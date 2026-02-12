@@ -3,7 +3,7 @@
  *
  * Handles: signature pad initialization, terms checkbox, acceptance flow.
  *
- * @package Bossier_Calculator_Builder
+ * @package Boost_Offerte
  */
 
 /* global jQuery, bsOfferte, SignaturePad */

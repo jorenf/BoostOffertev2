@@ -2,13 +2,13 @@
 /**
  * Offerte List Table.
  *
- * @package Bossier_Calculator_Builder
+ * @package Boost_Offerte
  */
 
-namespace Bossier\Calculator\Admin;
+namespace BoostOfferte\Admin;
 
-use Bossier\Calculator\Offerte\Offerte_Post_Type;
-use Bossier\Calculator\Offerte\Offerte_Model;
+use BoostOfferte\Offerte_Post_Type;
+use BoostOfferte\Offerte_Model;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -40,12 +40,12 @@ class Offerte_List_Table extends \WP_List_Table {
     public function get_columns() {
         return array(
             'cb'         => '<input type="checkbox" />',
-            'nummer'     => __( 'Offertenummer', 'bossier-calculator' ),
-            'klant'      => __( 'Klant', 'bossier-calculator' ),
-            'datum'      => __( 'Datum', 'bossier-calculator' ),
-            'geldig_tot' => __( 'Geldig tot', 'bossier-calculator' ),
-            'status'     => __( 'Status', 'bossier-calculator' ),
-            'bedrag'     => __( 'Bedrag', 'bossier-calculator' ),
+            'nummer'     => __( 'Offertenummer', 'boost-offerte' ),
+            'klant'      => __( 'Klant', 'boost-offerte' ),
+            'datum'      => __( 'Datum', 'boost-offerte' ),
+            'geldig_tot' => __( 'Geldig tot', 'boost-offerte' ),
+            'status'     => __( 'Status', 'boost-offerte' ),
+            'bedrag'     => __( 'Bedrag', 'boost-offerte' ),
         );
     }
 
@@ -83,7 +83,7 @@ class Offerte_List_Table extends \WP_List_Table {
             '<a href="%s" class="%s">%s <span class="count">(%d)</span></a>',
             esc_url( $base ),
             $class,
-            esc_html__( 'Alle', 'bossier-calculator' ),
+            esc_html__( 'Alle', 'boost-offerte' ),
             $total
         );
 
@@ -111,8 +111,8 @@ class Offerte_List_Table extends \WP_List_Table {
      */
     protected function get_bulk_actions() {
         return array(
-            'cancel' => __( 'Annuleren', 'bossier-calculator' ),
-            'delete' => __( 'Verwijderen', 'bossier-calculator' ),
+            'cancel' => __( 'Annuleren', 'boost-offerte' ),
+            'delete' => __( 'Verwijderen', 'boost-offerte' ),
         );
     }
 
